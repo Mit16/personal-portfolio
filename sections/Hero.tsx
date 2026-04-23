@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown, Github, Linkedin, Mail } from 'lucide-react';
 
-const words = ['Backend Engineer', 'Full Stack Developer', 'System Architect', 'Cloud Specialist'];
+const words = ['Backend Engineer', 'Full Stack Developer'];
 
 export const Hero = () => {
   const [index, setIndex] = useState(0);
@@ -12,20 +12,23 @@ export const Hero = () => {
 
   useEffect(() => {
     const currentWord = words[index];
+
     const timeout = setTimeout(() => {
       if (!isDeleting) {
         setSubText(currentWord.substring(0, subText.length + 1));
+
         if (subText.length === currentWord.length) {
-          setTimeout(() => setIsDeleting(true), 2000);
+          setIsDeleting(true);
         }
       } else {
         setSubText(currentWord.substring(0, subText.length - 1));
+
         if (subText.length === 0) {
           setIsDeleting(false);
           setIndex((prev) => (prev + 1) % words.length);
         }
       }
-    }, isDeleting ? 50 : 100);
+    }, isDeleting ? 50 : subText === currentWord ? 2000 : 100);
 
     return () => clearTimeout(timeout);
   }, [subText, isDeleting, index]);
