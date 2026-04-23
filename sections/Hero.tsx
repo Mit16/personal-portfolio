@@ -1,37 +1,59 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown, Github, Linkedin, Mail } from 'lucide-react';
 
 const words = ['Backend Engineer', 'Full Stack Developer'];
-
 export const Hero = () => {
-  const [index, setIndex] = useState(0);
-  const [subText, setSubText] = useState('');
-  const [isDeleting, setIsDeleting] = useState(false);
+  const [displayed, setDisplayed] = useState('');
+  const state = useRef({
+    wordIndex: 0,
+    charIndex: 0,
+    isDeleting: false,
+    isPaused: false,
+  });
 
   useEffect(() => {
-    const currentWord = words[index];
+    let timer: ReturnType<typeof setTimeout>;
 
-    const timeout = setTimeout(() => {
-      if (!isDeleting) {
-        setSubText(currentWord.substring(0, subText.length + 1));
+    const tick = () => {
+      const s = state.current;
+      const currentWord = words[s.wordIndex];
 
-        if (subText.length === currentWord.length) {
-          setIsDeleting(true);
+      if (s.isPaused) {
+        s.isPaused = false;
+        s.isDeleting = true;
+        timer = setTimeout(tick, 50);
+        return;
+      }
+
+      if (!s.isDeleting) {
+        s.charIndex += 1;
+        setDisplayed(currentWord.slice(0, s.charIndex));
+
+        if (s.charIndex === currentWord.length) {
+          s.isPaused = true;
+          timer = setTimeout(tick, 2000); // pause at full word
+        } else {
+          timer = setTimeout(tick, 100);
         }
       } else {
-        setSubText(currentWord.substring(0, subText.length - 1));
+        s.charIndex -= 1;
+        setDisplayed(currentWord.slice(0, s.charIndex));
 
-        if (subText.length === 0) {
-          setIsDeleting(false);
-          setIndex((prev) => (prev + 1) % words.length);
+        if (s.charIndex === 0) {
+          s.isDeleting = false;
+          s.wordIndex = (s.wordIndex + 1) % words.length;
+          timer = setTimeout(tick, 300); // brief pause before next word
+        } else {
+          timer = setTimeout(tick, 50);
         }
       }
-    }, isDeleting ? 50 : subText === currentWord ? 2000 : 100);
+    };
 
-    return () => clearTimeout(timeout);
-  }, [subText, isDeleting, index]);
+    timer = setTimeout(tick, 100);
+    return () => clearTimeout(timer);
+  }, []); // runs once — ref holds all mutable state
 
   return (
     <section className="relative h-screen flex flex-col justify-center items-center text-center px-6 overflow-hidden">
@@ -47,7 +69,7 @@ export const Hero = () => {
         </h1>
         <div className="h-12 md:h-16 mb-8">
           <p className="text-xl md:text-3xl text-neutral-400 font-light tracking-wide">
-            {subText}<span className="animate-pulse text-sky-500">|</span>
+            {displayed}<span className="animate-pulse text-sky-500">|</span>
           </p>
         </div>
 
