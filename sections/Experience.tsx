@@ -36,7 +36,7 @@ export const Experience = () => {
                 </ul>
                 <div className="flex flex-wrap gap-2 pt-4">
                   {exp.tech.map(t => (
-                    <span key={t} className="px-3 py-1 bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5 rounded-full text-[9px] text-neutral-600 dark:text-neutral-500 uppercase font-futuristic group-hover:text-neutral-900 dark:group-hover:text-neutral-300 group-hover:border-sky-500/20 transition-all duration-500">
+                    <span key={t} className="px-3 py-1 bg-black/10 dark:bg-white/5 border border-black/10 dark:border-white/5 rounded-full text-[9px] text-neutral-800 dark:text-neutral-300 uppercase font-futuristic group-hover:text-neutral-900 dark:group-hover:text-white group-hover:border-sky-500/20 transition-all duration-500">
                       {t}
                     </span>
                   ))}

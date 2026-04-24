@@ -23,11 +23,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Navbar = () => {
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 px-6 py-8 flex justify-between items-center mix-blend-difference pointer-events-none">
-      <div className="font-futuristic font-bold text-xl tracking-tighter pointer-events-auto cursor-pointer">
+    <nav className="fixed top-0 left-0 w-full z-50 px-6 py-8 flex justify-between items-center pointer-events-none">
+      <div className="font-futuristic font-bold text-xl tracking-tighter pointer-events-auto cursor-pointer text-neutral-900 dark:text-white transition-colors duration-300">
         AV
       </div>
-      <div className="hidden md:flex gap-8 font-futuristic text-xs tracking-widest uppercase pointer-events-auto">
+      <div className="hidden md:flex gap-8 font-futuristic text-xs tracking-widest uppercase pointer-events-auto text-neutral-600 dark:text-neutral-300 transition-colors duration-300">
         <a href="#about" className="hover:text-sky-500 transition-colors">About</a>
         <a href="#projects" className="hover:text-sky-500 transition-colors">Projects</a>
         <a href="#contact" className="hover:text-sky-500 transition-colors">Contact</a>

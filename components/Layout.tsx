@@ -25,8 +25,8 @@ export const SectionTitle: React.FC<{ title: string; subtitle?: string }> = ({ t
       className="mb-10 md:mb-14"
     >
       <div className="flex items-center gap-4 mb-2">
-        <div className="w-8 h-[1px] bg-sky-500/50" />
-        {subtitle && <p className="text-sky-400 font-futuristic text-xs tracking-[0.3em] uppercase">{subtitle}</p>}
+        <div className="w-8 h-[1px] bg-sky-600/50 dark:bg-sky-500/50" />
+        {subtitle && <p className="text-sky-600 dark:text-sky-400 font-futuristic text-xs tracking-[0.3em] uppercase">{subtitle}</p>}
       </div>
       <h2 className="text-5xl md:text-7xl font-bold font-futuristic text-neutral-900 dark:text-white uppercase tracking-tighter leading-none">
         {title.split(' ').map((word, i) => (

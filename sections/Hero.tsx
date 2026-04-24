@@ -68,7 +68,7 @@ export const Hero = () => {
           AMIT VISHWAKARMA
         </h1>
         <div className="h-12 md:h-16 mb-8">
-          <p className="text-xl md:text-3xl text-neutral-400 font-light tracking-wide">
+          <p className="text-xl md:text-3xl text-neutral-600 dark:text-neutral-400 font-light tracking-wide">
             {displayed}<span className="animate-pulse text-sky-500">|</span>
           </p>
         </div>

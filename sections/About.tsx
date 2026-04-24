@@ -14,7 +14,7 @@ const StatCounter = ({ target, label }: { target: string, label: string }) => (
     >
       {target}
     </motion.h4>
-    <p className="text-neutral-400 uppercase tracking-widest text-xs mt-2">{label}</p>
+    <p className="text-neutral-600 dark:text-neutral-400 uppercase tracking-widest text-xs mt-2">{label}</p>
   </div>
 );
 

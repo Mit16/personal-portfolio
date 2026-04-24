@@ -1,5 +1,5 @@
 // sections\Projects.tsx
-import React from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Section, SectionTitle } from '../components/Layout';
 import { PROJECTS } from '../constants';
@@ -97,26 +97,26 @@ const ProjectModal = ({ project, onClose }: { project: any; onClose: () => void 
           {/* Links */}
           <div className="flex gap-4 pt-2 border-t border-white/5">
             {project.github && (
-
-              href = { project.github }
+              <a
+                href={project.github}
                 target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 text-xs font-futuristic uppercase tracking-widest text-neutral-400 hover:text-sky-400 transition-colors"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-xs font-futuristic uppercase tracking-widest text-neutral-400 hover:text-sky-400 transition-colors"
               >
-            <Github size={15} /> Source Code
-          </a>
+                <Github size={15} /> Source Code
+              </a>
             )}
-          {project.demo && (
-
-            href = { project.demo }
+            {project.demo && (
+              <a
+                href={project.demo}
                 target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-2 text-xs font-futuristic uppercase tracking-widest text-neutral-400 hover:text-sky-400 transition-colors"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-xs font-futuristic uppercase tracking-widest text-neutral-400 hover:text-sky-400 transition-colors"
               >
-          <ExternalLink size={15} /> Live Demo
-        </a>
+                <ExternalLink size={15} /> Live Demo
+              </a>
             )}
-      </div>
+          </div>
     </div>
       </motion.div >
     </motion.div >
@@ -124,7 +124,7 @@ const ProjectModal = ({ project, onClose }: { project: any; onClose: () => void 
 };
 
 
-const ProjectCard = ({ project }: { project: any }) => {
+const ProjectCard = ({ project, onClick }: { project: any; onClick: () => void }) => {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
@@ -163,7 +163,7 @@ const ProjectCard = ({ project }: { project: any }) => {
         <img
           src={project.image}
           alt={project.title}
-          className="w-full h-full object-cover opacity-30 grayscale group-hover:grayscale-0 group-hover:opacity-50 group-hover:scale-105 transition-all duration-700"
+          className="w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 group-hover:opacity-70 group-hover:scale-105 transition-all duration-700"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-black via-white/80 dark:via-black/80 to-transparent" />
       </div>
@@ -173,15 +173,17 @@ const ProjectCard = ({ project }: { project: any }) => {
         className="relative z-10 p-8 flex flex-col h-full justify-end min-h-[500px]"
       >
         <div className="mb-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-          <div className="flex justify-between items-start mb-4">
+          <div className="flex justify-between items-start mb-2">
             <h3 className="text-3xl font-bold font-futuristic text-neutral-900 dark:text-white tracking-tighter leading-tight uppercase">
               {project.title}
             </h3>
             <ArrowUpRight className="text-sky-500 opacity-0 group-hover:opacity-100 transition-all duration-500 -translate-x-2 group-hover:translate-x-0" />
           </div>
-          <p className="text-sm text-neutral-400 leading-relaxed mb-6 max-w-md opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100">
-            {project.description}
-          </p>
+          <div className="max-h-0 overflow-hidden opacity-0 group-hover:max-h-40 group-hover:opacity-100 transition-all duration-700 delay-100">
+            <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed mb-4 max-w-md">
+              {project.description}
+            </p>
+          </div>
         </div>
 
         <div className="pt-4 border-t border-white/10 flex flex-col gap-4">
@@ -192,7 +194,7 @@ const ProjectCard = ({ project }: { project: any }) => {
               </span>
             ))}
           </div>
-          <p className="text-[10px] text-sky-400/60 font-futuristic uppercase tracking-widest">
+          <p className="text-[10px] text-sky-600/80 dark:text-sky-400/60 font-futuristic uppercase tracking-widest">
             Click to view details →
           </p>
         </div>

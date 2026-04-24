@@ -65,7 +65,7 @@ export const ThreeVisual = () => {
     <Section id="visual" className="text-center">
       <div className="flex flex-col items-center">
         <SectionTitle title="Global Impact" subtitle="05 // CONNECTIVITY" />
-        <p className="text-neutral-400 max-w-2xl mb-12">
+        <p className="text-neutral-600 dark:text-neutral-400 max-w-2xl mb-12">
           Engineering backend architectures that connect users across the globe.
           Scalable, reliable, and secure systems built for the modern internet.
         </p>
@@ -106,7 +106,7 @@ export const ThreeVisual = () => {
           ].map(({ value, label }) => (
             <div key={label} className="text-center">
               <p className="text-2xl font-bold font-futuristic text-sky-400">{value}</p>
-              <p className="text-xs text-neutral-500 uppercase tracking-widest mt-1">{label}</p>
+              <p className="text-xs text-neutral-700 dark:text-neutral-500 uppercase tracking-widest mt-1">{label}</p>
             </div>
           ))}
         </div>

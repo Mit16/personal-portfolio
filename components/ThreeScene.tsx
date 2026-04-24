@@ -63,15 +63,6 @@ const AnimatedShape = () => {
 export const ThreeBackground = () => {
   return (
     <div className="fixed inset-0 -z-10 bg-neutral-50 dark:bg-[#030303] transition-colors duration-300">
-      <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
-        {/* @ts-ignore - Fix: ambientLight is an intrinsic Three.js element */}
-        <ambientLight intensity={0.5} />
-        {/* @ts-ignore - Fix: pointLight is an intrinsic Three.js element */}
-        <pointLight position={[10, 10, 10]} intensity={1} />
-        <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
-        <ParticleField />
-        <AnimatedShape />
-      </Canvas>
     </div>
   );
 };
