@@ -69,7 +69,7 @@ function App() {
       </AnimatePresence>
 
       {loaded && (
-        <main className="relative bg-[#030303]">
+        <main className="relative">
           <CustomCursor />
           <Navbar />
           <ThreeBackground />

@@ -62,7 +62,7 @@ const AnimatedShape = () => {
 
 export const ThreeBackground = () => {
   return (
-    <div className="fixed inset-0 -z-10 bg-[#030303]">
+    <div className="fixed inset-0 -z-10 bg-neutral-50 dark:bg-[#030303] transition-colors duration-300">
       <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
         {/* @ts-ignore - Fix: ambientLight is an intrinsic Three.js element */}
         <ambientLight intensity={0.5} />

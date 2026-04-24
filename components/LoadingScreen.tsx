@@ -25,7 +25,7 @@ export const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
         <motion.div
             exit={{ opacity: 0, scale: 1.05 }}
             transition={{ duration: 0.6, ease: 'easeInOut' }}
-            className="fixed inset-0 z-[99999] bg-[#030303] flex flex-col items-center justify-center"
+            className="fixed inset-0 z-[99999] bg-neutral-50 dark:bg-[#030303] flex flex-col items-center justify-center"
         >
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -34,12 +34,12 @@ export const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
                 className="flex flex-col items-center gap-8"
             >
                 {/* Logo */}
-                <div className="font-futuristic font-bold text-6xl tracking-tighter text-white">
+                <div className="font-futuristic font-bold text-6xl tracking-tighter text-neutral-900 dark:text-white">
                     AV
                 </div>
 
                 {/* Progress bar */}
-                <div className="w-48 h-[1px] bg-white/10 relative overflow-hidden">
+                <div className="w-48 h-[1px] bg-black/10 dark:bg-white/10 relative overflow-hidden">
                     <motion.div
                         className="absolute inset-y-0 left-0 bg-sky-500"
                         style={{ width: `${progress}%` }}

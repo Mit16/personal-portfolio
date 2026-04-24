@@ -22,14 +22,14 @@ export const Skills = () => {
               borderColor: 'rgba(56,189,248,0.4)',
               backgroundColor: 'rgba(56,189,248,0.03)'
             }}
-            className="group relative p-8 border border-white/[0.03] bg-white/[0.01] rounded-[2rem] flex flex-col items-center justify-center transition-all duration-300 overflow-hidden"
+            className="group relative p-8 border border-black/5 dark:border-white/[0.03] bg-black/[0.02] dark:bg-white/[0.01] rounded-[2rem] flex flex-col items-center justify-center transition-all duration-300 overflow-hidden"
           >
             <div className="mb-4 text-neutral-600 group-hover:text-current transition-all duration-500 group-hover:scale-110"
               style={{ color: undefined }} // let brand color come through on hover
             >
               {skill.icon}
             </div>
-            <h3 className="font-futuristic font-medium text-xs text-neutral-500 group-hover:text-white uppercase tracking-[0.2em]">
+            <h3 className="font-futuristic font-medium text-xs text-neutral-500 group-hover:text-neutral-900 dark:group-hover:text-white uppercase tracking-[0.2em]">
               {skill.name}
             </h3>
 

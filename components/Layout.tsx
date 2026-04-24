@@ -28,7 +28,7 @@ export const SectionTitle: React.FC<{ title: string; subtitle?: string }> = ({ t
         <div className="w-8 h-[1px] bg-sky-500/50" />
         {subtitle && <p className="text-sky-400 font-futuristic text-xs tracking-[0.3em] uppercase">{subtitle}</p>}
       </div>
-      <h2 className="text-5xl md:text-7xl font-bold font-futuristic text-white uppercase tracking-tighter leading-none">
+      <h2 className="text-5xl md:text-7xl font-bold font-futuristic text-neutral-900 dark:text-white uppercase tracking-tighter leading-none">
         {title.split(' ').map((word, i) => (
           <span key={i} className={i % 2 !== 0 ? "text-transparent stroke-white stroke-1" : ""}>
             {word}{' '}
@@ -37,6 +37,9 @@ export const SectionTitle: React.FC<{ title: string; subtitle?: string }> = ({ t
       </h2>
       <style>{`
         .stroke-white {
+          -webkit-text-stroke: 1px rgba(0, 0, 0, 0.3);
+        }
+        .dark .stroke-white {
           -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
         }
       `}</style>

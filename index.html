@@ -6,6 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Amit Vishwakarma | Backend & Full Stack Engineer</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {}
+      }
+    }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -35,8 +43,6 @@
   <style>
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #030303;
-      color: #ffffff;
       overflow-x: hidden;
     }
 
@@ -90,7 +96,7 @@
   <link rel="stylesheet" href="/index.css">
 </head>
 
-<body>
+<body class="bg-neutral-50 text-neutral-900 dark:bg-[#030303] dark:text-white transition-colors duration-300">
   <div id="root"></div>
   <script type="module" src="/index.tsx"></script>
 </body>

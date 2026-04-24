@@ -24,11 +24,11 @@ export const About = () => {
       <div className="grid lg:grid-cols-2 gap-12 items-center">
         <div>
           <SectionTitle title="Engineering Digital Core" subtitle="01 // ABOUT ME" />
-          <p className="text-lg text-neutral-300 leading-relaxed mb-8 max-w-xl">
+          <p className="text-lg text-neutral-700 dark:text-neutral-300 leading-relaxed mb-8 max-w-xl">
             I'm a <span className="text-sky-500 font-semibold">Backend Engineer</span> with a passion for building high-performance, scalable systems. 
             Currently based in Noida, I specialize in architecting production-grade APIs, microservices, and real-time data pipelines.
           </p>
-          <p className="text-neutral-400 mb-12">
+          <p className="text-neutral-600 dark:text-neutral-400 mb-12">
             My engineering philosophy revolves around code reliability and system efficiency. Whether it's crafting custom Redis implementations or engineering multi-vendor e-commerce backends, I thrive at the intersection of complex logic and elegant design.
           </p>
 
@@ -58,7 +58,7 @@ export const About = () => {
             </Float>
           </Canvas>
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-center backdrop-blur-sm p-4 rounded-lg border border-white/10 bg-black/20">
+            <div className="text-center backdrop-blur-sm p-4 rounded-lg border border-black/10 dark:border-white/10 bg-white/20 dark:bg-black/20 text-neutral-900 dark:text-white">
               <span className="text-5xl font-bold font-futuristic">{"{CODE}"}</span>
             </div>
           </div>

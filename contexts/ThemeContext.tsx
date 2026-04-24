@@ -15,7 +15,12 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     });
 
     useEffect(() => {
-        document.documentElement.setAttribute('data-theme', theme);
+        const root = window.document.documentElement;
+        if (theme === 'dark') {
+            root.classList.add('dark');
+        } else {
+            root.classList.remove('dark');
+        }
         localStorage.setItem('theme', theme);
     }, [theme]);
 

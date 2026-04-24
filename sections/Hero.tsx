@@ -64,7 +64,7 @@ export const Hero = () => {
         <h2 className="text-sky-500 font-futuristic tracking-[0.4em] mb-4 text-sm md:text-base uppercase">
           Welcome to my Digital Space
         </h2>
-        <h1 className="text-6xl md:text-9xl font-bold font-futuristic tracking-tighter mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-500">
+        <h1 className="text-6xl md:text-9xl font-bold font-futuristic tracking-tighter mb-6 bg-clip-text text-transparent bg-gradient-to-b from-neutral-900 dark:from-white to-neutral-500">
           AMIT VISHWAKARMA
         </h1>
         <div className="h-12 md:h-16 mb-8">
@@ -90,7 +90,7 @@ export const Hero = () => {
               href={RESUME_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-8 py-4 bg-white/5 border border-white/10 backdrop-blur-md text-white font-bold rounded-full transition-all hover:bg-white/10"
+              className="flex items-center gap-2 px-8 py-4 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 backdrop-blur-md text-neutral-900 dark:text-white font-bold rounded-full transition-all hover:bg-black/10 dark:hover:bg-white/10"
             >
               <Download size={16} />
               Download Resume
@@ -100,7 +100,7 @@ export const Hero = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               disabled
-              className="flex items-center gap-2 px-8 py-4 bg-white/5 border border-white/10 backdrop-blur-md text-white/30 font-bold rounded-full cursor-not-allowed"
+              className="flex items-center gap-2 px-8 py-4 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 backdrop-blur-md text-neutral-900/30 dark:text-white/30 font-bold rounded-full cursor-not-allowed"
             >
               <Download size={16} />
               Resume Coming Soon

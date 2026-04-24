@@ -44,10 +44,10 @@ const StatCard = ({ icon, value, label }: { icon: React.ReactNode; value: string
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="flex flex-col items-center justify-center p-6 border border-white/5 bg-white/[0.01] rounded-2xl gap-3"
+        className="flex flex-col items-center justify-center p-6 border border-black/5 dark:border-white/5 bg-black/[0.02] dark:bg-white/[0.01] rounded-2xl gap-3"
     >
         <div className="text-sky-500">{icon}</div>
-        <p className="text-3xl font-bold font-futuristic text-white">{value}</p>
+        <p className="text-3xl font-bold font-futuristic text-neutral-900 dark:text-white">{value}</p>
         <p className="text-xs text-neutral-500 uppercase tracking-widest">{label}</p>
     </motion.div>
 );
@@ -61,10 +61,10 @@ const RepoCard = ({ repo }: { repo: Repo }) => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         whileHover={{ y: -4, borderColor: 'rgba(56,189,248,0.3)' }}
-        className="group flex flex-col gap-3 p-6 border border-white/5 bg-white/[0.01] rounded-2xl transition-all duration-300 hover:bg-white/[0.03]"
+        className="group flex flex-col gap-3 p-6 border border-black/5 dark:border-white/5 bg-black/[0.02] dark:bg-white/[0.01] rounded-2xl transition-all duration-300 hover:bg-black/[0.05] dark:hover:bg-white/[0.03]"
     >
         <div className="flex justify-between items-start">
-            <h4 className="font-futuristic font-semibold text-white text-sm uppercase tracking-wider leading-tight pr-2">
+            <h4 className="font-futuristic font-semibold text-neutral-900 dark:text-white text-sm uppercase tracking-wider leading-tight pr-2">
                 {repo.name}
             </h4>
             <ExternalLink size={14} className="text-neutral-600 group-hover:text-sky-400 transition-colors shrink-0 mt-0.5" />
@@ -74,7 +74,7 @@ const RepoCard = ({ repo }: { repo: Repo }) => (
             {repo.description || 'No description provided.'}
         </p>
 
-        <div className="flex items-center justify-between pt-2 border-t border-white/5">
+        <div className="flex items-center justify-between pt-2 border-t border-black/5 dark:border-white/5">
             <div className="flex items-center gap-1.5">
                 {repo.language && (
                     <>
@@ -225,7 +225,7 @@ export const Github = () => {
                             href={`https://github.com/${GITHUB_USERNAME}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center gap-3 px-8 py-4 border border-white/10 bg-white/[0.02] rounded-full text-sm font-futuristic uppercase tracking-widest text-neutral-300 hover:text-white hover:border-sky-500/40 transition-all"
+                            className="flex items-center gap-3 px-8 py-4 border border-black/10 dark:border-white/10 bg-black/[0.02] dark:bg-white/[0.02] rounded-full text-sm font-futuristic uppercase tracking-widest text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:border-sky-500/40 transition-all"
                         >
                             <SiGithub size={18} /> View Full Profile
                         </motion.a>
