@@ -1,5 +1,5 @@
-
-import React, { Suspense, useEffect } from 'react';
+// App.tsx
+import React, { Suspense, useEffect, useState } from 'react';
 import { Hero } from './sections/Hero';
 import { About } from './sections/About';
 import { Skills } from './sections/Skills';
@@ -12,6 +12,12 @@ import { ThreeBackground } from './components/ThreeScene';
 import { CustomCursor } from './components/CustomCursor';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Github } from './sections/Github';
+import { AnimatePresence } from 'framer-motion';
+import { ThemeProvider } from './contexts/ThemeContext';
+import { LoadingScreen } from './components/LoadingScreen';
+import { ThemeToggle } from './components/ThemeToggle';
+import { CurrentlyBuilding } from './components/CurrentlyBuilding';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -31,7 +37,11 @@ const Navbar = () => {
 };
 
 function App() {
+  const [loaded, setLoaded] = useState(false);
+
   useEffect(() => {
+    if (!loaded) return;
+
     // Reveal animation for all sections
     const sections = document.querySelectorAll('section');
     sections.forEach((section) => {
@@ -50,35 +60,45 @@ function App() {
         }
       );
     });
-  }, []);
+  }, [loaded]);
 
   return (
-    <main className="relative bg-[#030303]">
-      <CustomCursor />
-      <Navbar />
-      <ThreeBackground />
+    <ThemeProvider>
+      <AnimatePresence mode="wait">
+        {!loaded && <LoadingScreen key="loader" onComplete={() => setLoaded(true)} />}
+      </AnimatePresence>
 
-      <div className="relative z-10">
-        <Hero />
-        <About />
-        <Skills />
-        <Experience />
-        <Projects />
-        <ThreeVisual />
-        <Contact />
-        <Footer />
-      </div>
+      {loaded && (
+        <main className="relative bg-[#030303]">
+          <CustomCursor />
+          <Navbar />
+          <ThreeBackground />
+          <ThemeToggle />
+          <CurrentlyBuilding />
 
-      {/* Background Noise Overlay — inline SVG data URI, no external fetch */}
-      <div
-        className="fixed inset-0 pointer-events-none z-[999] opacity-[0.03] mix-blend-overlay"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E")`,
-          backgroundRepeat: 'repeat',
-          backgroundSize: '128px 128px',
-        }}
-      />
-    </main>
+          <div className="relative z-10">
+            <Hero />
+            <About />
+            <Skills />
+            <Experience />
+            <Github />
+            <Projects />
+            <ThreeVisual />
+            <Contact />
+            <Footer />
+          </div>
+
+          <div
+            className="fixed inset-0 pointer-events-none z-[999] opacity-[0.03] mix-blend-overlay"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E")`,
+              backgroundRepeat: 'repeat',
+              backgroundSize: '128px 128px',
+            }}
+          />
+        </main>
+      )}
+    </ThemeProvider>
   );
 }
 

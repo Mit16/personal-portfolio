@@ -1,4 +1,4 @@
-
+// types.ts
 export interface Project {
   id: string;
   title: string;
@@ -7,6 +7,11 @@ export interface Project {
   image: string;
   github?: string;
   demo?: string;
+  details?: {
+    architecture: string;
+    challenges: string[];
+    metrics: { label: string; value: string }[];
+  };
 }
 
 export interface Experience {
@@ -20,5 +25,5 @@ export interface Experience {
 export interface Skill {
   name: string;
   icon: React.ReactNode;
-  category: 'Backend' | 'Frontend' | 'Tools' | 'Database';
+  category: "Backend" | "Frontend" | "Tools" | "Database";
 }

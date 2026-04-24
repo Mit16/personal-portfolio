@@ -1,4 +1,4 @@
-
+// constants.tsx
 import React from 'react';
 import { Server, Database, Code2, Cpu, Globe, Cloud, ShieldCheck, Zap, Layers, Smartphone } from 'lucide-react';
 import {
@@ -28,6 +28,19 @@ export const PROJECTS: Project[] = [
     tech: ['Node.js', 'Express', 'MongoDB', 'Redis', 'BullMQ'],
     image: figureFitImg,
     demo: 'https://figurefitfashion.com',
+    details: {
+      architecture: 'Monolithic Node.js API with Redis caching layer, BullMQ job queues for async image processing, and MongoDB Atlas for inventory. Deployed on AWS EC2 behind an Nginx reverse proxy.',
+      challenges: [
+        'Handling concurrent inventory updates without overselling',
+        'Stripe webhook idempotency under high traffic',
+        'Cloudinary transformation pipelines for 10K+ SKU images',
+      ],
+      metrics: [
+        { label: 'Response Time', value: '<80ms' },
+        { label: 'Uptime', value: '99.9%' },
+        { label: 'Concurrent Users', value: '2K+' },
+      ],
+    },
   },
   {
     id: '2',
@@ -36,6 +49,19 @@ export const PROJECTS: Project[] = [
     tech: ['Kotlin', 'Spring Boot', 'PostgreSQL', 'MQTT', 'Gemini AI'],
     image: healthFirstImg,
     github: 'https://github.com/Mit16/HealthFirst-Personalized-Health-Monitoring-System',
+    details: {
+      architecture: 'Spring Boot microservices communicating via MQTT for real-time Wear OS telemetry ingestion. PostgreSQL for time-series health records, Gemini API for anomaly detection inference.',
+      challenges: [
+        'Sub-second telemetry ingestion from 100+ concurrent devices',
+        'Designing a reliable MQTT broker with QoS guarantees',
+        'Tuning Gemini prompts for 94% anomaly detection accuracy',
+      ],
+      metrics: [
+        { label: 'Detection Accuracy', value: '94%' },
+        { label: 'Ingestion Latency', value: '<200ms' },
+        { label: 'Data Points/Day', value: '1M+' },
+      ],
+    },
   },
   {
     id: '3',
@@ -44,6 +70,19 @@ export const PROJECTS: Project[] = [
     tech: ['C++', 'TCP/IP', 'Data Structures', 'Networking'],
     image: Customcppredis,
     github: 'https://github.com/Mit16/Redis-Implementation-in-C-Cpp',
+    details: {
+      architecture: 'Single-threaded event loop in C++ mimicking Redis internals. Custom RESP protocol parser, hash-table with open addressing, and epoll-based non-blocking I/O.',
+      challenges: [
+        'Implementing RESP serialization from scratch',
+        'Thread-safe hash-table resizing without stop-the-world pauses',
+        'Matching Redis latency benchmarks on commodity hardware',
+      ],
+      metrics: [
+        { label: 'GET Latency', value: '<1ms' },
+        { label: 'Commands Supported', value: '12' },
+        { label: 'Max Throughput', value: '50K ops/s' },
+      ],
+    },
   },
   {
     id: '4',
@@ -51,6 +90,19 @@ export const PROJECTS: Project[] = [
     description: 'Unified business intelligence platform. Orchestrates complex workflows across multiple external APIs for real-time domain analysis, trademark validation, and automated ad campaign generation. Built for high-throughput decision-making.',
     tech: ['Next.js', 'Python', 'FastAPI', 'Redis', 'Google Cloud'],
     image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800',
+    details: {
+      architecture: 'Next.js frontend orchestrating a Python FastAPI backend. Redis for caching expensive API responses. Google Cloud Run for auto-scaling inference workloads.',
+      challenges: [
+        'Orchestrating 5+ external APIs with partial failure handling',
+        'Keeping trademark search latency under 3s end-to-end',
+        'Rate limiting and cost control on Gemini API calls',
+      ],
+      metrics: [
+        { label: 'APIs Orchestrated', value: '5+' },
+        { label: 'Avg Response', value: '<3s' },
+        { label: 'Cache Hit Rate', value: '72%' },
+      ],
+    },
   }
 ];
 
