@@ -1,7 +1,24 @@
 
 import React from 'react';
 import { Server, Database, Code2, Cpu, Globe, Cloud, ShieldCheck, Zap, Layers, Smartphone } from 'lucide-react';
+import {
+  SiNodedotjs,
+  SiSpringboot,
+  SiExpress,
+  SiRedis,
+  SiMongodb,
+  SiPostgresql,
+  SiReact,
+  SiNextdotjs,
+  SiDocker,
+  SiJsonwebtokens,
+  SiKubernetes,
+} from 'react-icons/si';
+import { SiAwslambda } from 'react-icons/si'; // or SiAwsamplify, SiAwsfargate
 import { Project, Experience, Skill } from './types';
+import Customcppredis from './assets/Custom-cpp-redis.jpg';
+import figureFitImg from "./assets/ecommerce.jpg";
+import healthFirstImg from './assets/Healthfirst.jpg';
 
 export const PROJECTS: Project[] = [
   {
@@ -9,7 +26,7 @@ export const PROJECTS: Project[] = [
     title: 'FigureFit E-commerce',
     description: 'A high-performance luxury fashion engine. Architected a scalable Node.js backend handling complex inventories, secure Stripe payment flows, and automated Cloudinary image optimization pipelines. Integrated multi-layered JWT/OAuth for enterprise-grade security.',
     tech: ['Node.js', 'Express', 'MongoDB', 'Redis', 'BullMQ'],
-    image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=800',
+    image: figureFitImg,
     demo: 'https://figurefitfashion.com',
   },
   {
@@ -17,7 +34,7 @@ export const PROJECTS: Project[] = [
     title: 'HealthFirst AI',
     description: 'Precision health monitoring system. Developed a robust Spring Boot microservice architecture that ingests real-time Wear OS telemetry. Implemented AI-driven risk assessment modules using Gemini API to predict health anomalies with 94% accuracy.',
     tech: ['Kotlin', 'Spring Boot', 'PostgreSQL', 'MQTT', 'Gemini AI'],
-    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=800',
+    image: healthFirstImg,
     github: 'https://github.com/Mit16/HealthFirst-Personalized-Health-Monitoring-System',
   },
   {
@@ -25,7 +42,7 @@ export const PROJECTS: Project[] = [
     title: 'Custom C++ Redis',
     description: 'High-speed in-memory data store built from the ground up. Engineered custom TCP/IP stack handling, protocol serialization, and optimized hash-table data structures for sub-millisecond latency. Focus on low-level memory management and thread safety.',
     tech: ['C++', 'TCP/IP', 'Data Structures', 'Networking'],
-    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format&fit=crop&q=80&w=800',
+    image: Customcppredis,
     github: 'https://github.com/Mit16/Redis-Implementation-in-C-Cpp',
   },
   {
@@ -64,16 +81,17 @@ export const EXPERIENCES: Experience[] = [
 ];
 
 export const SKILLS: Skill[] = [
-  { name: 'Node.js', icon: <Server size={22} />, category: 'Backend' },
-  { name: 'Spring Boot', icon: <Layers size={22} />, category: 'Backend' },
-  { name: 'Express.js', icon: <Cpu size={22} />, category: 'Backend' },
-  { name: 'Redis', icon: <Zap size={22} />, category: 'Backend' },
-  { name: 'MongoDB', icon: <Database size={22} />, category: 'Database' },
-  { name: 'PostgreSQL', icon: <Database size={22} />, category: 'Database' },
-  { name: 'React.js', icon: <Code2 size={22} />, category: 'Frontend' },
-  { name: 'Next.js', icon: <Globe size={22} />, category: 'Frontend' },
-  { name: 'AWS', icon: <Cloud size={22} />, category: 'Tools' },
-  { name: 'Docker', icon: <Layers size={22} />, category: 'Tools' },
-  { name: 'JWT/Auth', icon: <ShieldCheck size={22} />, category: 'Tools' },
-  { name: 'Microservices', icon: <Layers size={22} />, category: 'Backend' },
+  { name: 'Node.js', icon: <SiNodedotjs size={28} />, category: 'Backend' },
+  { name: 'Spring Boot', icon: <SiSpringboot size={28} />, category: 'Backend' },
+  { name: 'Express.js', icon: <SiExpress size={28} />, category: 'Backend' },
+  { name: 'Redis', icon: <SiRedis size={28} />, category: 'Backend' },
+  { name: 'MongoDB', icon: <SiMongodb size={28} />, category: 'Database' },
+  { name: 'PostgreSQL', icon: <SiPostgresql size={28} />, category: 'Database' },
+  { name: 'React.js', icon: <SiReact size={28} />, category: 'Frontend' },
+  { name: 'Next.js', icon: <SiNextdotjs size={28} />, category: 'Frontend' },
+  // { name: 'AWS', icon: <SiAmazonwebservices size={28} />, category: 'Tools' },
+  // { name: 'AWS', icon: <SiAwslambda size={28} />, category: 'Tools' },
+  { name: 'Docker', icon: <SiDocker size={28} />, category: 'Tools' },
+  { name: 'JWT/Auth', icon: <SiJsonwebtokens size={28} />, category: 'Tools' },
+  { name: 'Kubernetes', icon: <SiKubernetes size={28} />, category: 'Tools' },
 ];

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown, Github, Linkedin, Mail } from 'lucide-react';
 
-const words = ['Backend Engineer', 'Full Stack Developer', 'System Architect', 'Cloud Specialist'];
+const words = ['Backend Engineer', 'Full Stack Developer'];
 
 export const Hero = () => {
   const [index, setIndex] = useState(0);
