@@ -1,4 +1,4 @@
-
+// sections\About.tsx
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Section, SectionTitle } from '../components/Layout';

@@ -1,3 +1,4 @@
+// components\CustomCursor.tsx
 import React, { useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 

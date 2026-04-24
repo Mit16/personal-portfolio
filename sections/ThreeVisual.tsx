@@ -1,4 +1,4 @@
-
+// sections\ThreeVisual.tsx
 import React from 'react';
 import { Canvas } from '@react-three/fiber';
 import { InteractiveGlobe } from '../components/ThreeScene';
