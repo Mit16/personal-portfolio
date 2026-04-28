@@ -7,7 +7,7 @@ import { Float, MeshDistortMaterial, Sphere } from '@react-three/drei';
 
 const StatCounter = ({ target, label }: { target: string, label: string }) => (
   <div className="text-center md:text-left">
-    <motion.h4 
+    <motion.h4
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       className="text-4xl md:text-5xl font-bold font-futuristic text-sky-500"
@@ -23,13 +23,14 @@ export const About = () => {
     <Section id="about">
       <div className="grid lg:grid-cols-2 gap-12 items-center">
         <div>
-          <SectionTitle title="Engineering Digital Core" subtitle="01 // ABOUT ME" />
-          <p className="text-lg text-neutral-700 dark:text-neutral-300 leading-relaxed mb-8 max-w-xl">
-            I'm a <span className="text-sky-500 font-semibold">Backend Engineer</span> with a passion for building high-performance, scalable systems. 
-            Currently based in Noida, I specialize in architecting production-grade APIs, microservices, and real-time data pipelines.
+          <SectionTitle title="About Me" subtitle="01 // ABOUT ME" />
+          <p className="text-lg text-neutral-700 dark:text-neutral-300 leading-relaxed mb-6 max-w-xl">
+            I'm a <span className="text-sky-500 font-semibold">Backend Engineer</span> focused on building scalable APIs, backend systems, and automation-driven workflows.
+            I enjoy solving complex problems across system design, performance optimization, and business logic.
           </p>
-          <p className="text-neutral-600 dark:text-neutral-400 mb-12">
-            My engineering philosophy revolves around code reliability and system efficiency. Whether it's crafting custom Redis implementations or engineering multi-vendor e-commerce backends, I thrive at the intersection of complex logic and elegant design.
+
+          <p className="text-neutral-600 dark:text-neutral-400 mb-12 max-w-xl">
+            From building a custom Redis implementation in C++ to developing production e-commerce systems and AI-integrated platforms, I enjoy working on systems that require both reliability and strong engineering fundamentals.
           </p>
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-8">

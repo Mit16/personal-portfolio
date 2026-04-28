@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Section, SectionTitle } from '../components/Layout';
 import { SiGithub } from 'react-icons/si';
-import { Star, GitFork, BookOpen, Users, GitCommit, ExternalLink } from 'lucide-react';
+import { Star, GitFork, BookOpen, GitCommit, ExternalLink } from 'lucide-react';
+import { FEATURED_PROJECTS } from '@/constants';
 
 const GITHUB_USERNAME = 'Mit16';
 
@@ -142,7 +143,7 @@ export const Github = () => {
 
     return (
         <Section id="github">
-            <SectionTitle title="Code Activity" subtitle="03.5 // GITHUB" />
+            <SectionTitle title="Code Activity" subtitle="04 // GITHUB" />
 
             {loading && (
                 <div className="flex items-center justify-center h-48 text-neutral-600 font-futuristic text-xs tracking-widest uppercase animate-pulse">
@@ -163,7 +164,7 @@ export const Github = () => {
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                         <StatCard icon={<BookOpen size={20} />} value={user.public_repos} label="Public Repos" />
                         <StatCard icon={<Star size={20} />} value={totalStars} label="Total Stars" />
-                        <StatCard icon={<Users size={20} />} value={user.followers} label="Followers" />
+                        <StatCard icon={<GitCommit size={20} />} value={repos.length} label="Active Repositories" />
                         <StatCard icon={<GitCommit size={20} />} value={topLangs[0]?.[0] ?? '—'} label="Top Language" />
                     </div>
 
@@ -210,10 +211,30 @@ export const Github = () => {
                     {/* Top repos grid */}
                     <div>
                         <p className="text-xs text-neutral-500 uppercase tracking-widest mb-6 font-futuristic">
-                            Top repositories
+                            Featured Projects
                         </p>
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                            {repos.map(repo => <RepoCard key={repo.id} repo={repo} />)}
+                            {FEATURED_PROJECTS.map((project, index) => (
+                                <motion.a
+                                    key={index}
+                                    href={project.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="group flex flex-col gap-3 p-6 border border-black/5 dark:border-white/5 bg-black/[0.02] dark:bg-white/[0.01] rounded-2xl"
+                                >
+                                    <h4 className="font-futuristic font-semibold text-neutral-900 dark:text-white text-sm uppercase tracking-wider">
+                                        {project.name}
+                                    </h4>
+
+                                    <p className="text-xs text-neutral-500 leading-relaxed">
+                                        {project.description}
+                                    </p>
+
+                                    <span className="text-[10px] text-sky-500 uppercase tracking-widest">
+                                        {project.tech}
+                                    </span>
+                                </motion.a>
+                            ))}
                         </div>
                     </div>
 

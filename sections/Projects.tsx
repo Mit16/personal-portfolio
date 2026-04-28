@@ -214,7 +214,7 @@ export const Projects = () => {
   return (
     <>
       <Section id="projects">
-        <SectionTitle title="Selected Works" subtitle="04 // PORTFOLIO" />
+        <SectionTitle title="Selected Works" subtitle="05 // PORTFOLIO" />
         <div className="grid md:grid-cols-2 gap-6 lg:gap-10">
           {PROJECTS.map(project => (
             <ProjectCard key={project.id} project={project} onClick={() => setSelected(project)} />

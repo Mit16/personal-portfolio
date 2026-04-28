@@ -64,7 +64,7 @@ export const ThreeVisual = () => {
   return (
     <Section id="visual" className="text-center">
       <div className="flex flex-col items-center">
-        <SectionTitle title="Global Impact" subtitle="05 // CONNECTIVITY" />
+        <SectionTitle title="Global Impact" subtitle="06 // CONNECTIVITY" />
         <p className="text-neutral-600 dark:text-neutral-400 max-w-2xl mb-12">
           Engineering backend architectures that connect users across the globe.
           Scalable, reliable, and secure systems built for the modern internet.
