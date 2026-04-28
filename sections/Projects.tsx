@@ -1,37 +1,60 @@
 // sections\Projects.tsx
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Section, SectionTitle } from '../components/Layout';
-import { PROJECTS } from '../constants';
-import { ExternalLink, Github, ArrowUpRight, X, ChevronRight } from 'lucide-react';
-import { useMotionValue, useSpring, useTransform } from 'framer-motion';
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Section, SectionTitle } from "../components/Layout";
+import { PROJECTS } from "../constants";
+import {
+  ExternalLink,
+  Github,
+  ArrowUpRight,
+  X,
+  ChevronRight,
+} from "lucide-react";
+import { useMotionValue, useSpring, useTransform } from "framer-motion";
 
 // ── Modal ──────────────────────────────────────────────────────────────────
 
-const ProjectModal = ({ project, onClose }: { project: any; onClose: () => void }) => {
+const ProjectModal = ({
+  project,
+  onClose,
+}: {
+  project: any;
+  onClose: () => void;
+}) => {
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       onClick={onClose}
-      className="fixed inset-0 z-[9998] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 md:p-8"
+      className="fixed inset-0 z-[9999] bg-black/80 backdrop-blur-sm flex items-start justify-center p-4 md:p-8 pt-28 md:pt-20"
     >
       <motion.div
         initial={{ opacity: 0, scale: 0.95, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 20 }}
-        transition={{ type: 'spring', stiffness: 200, damping: 24 }}
-        onClick={e => e.stopPropagation()}
+        transition={{ type: "spring", stiffness: 200, damping: 24 }}
+        onClick={(e) => e.stopPropagation()}
         className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-white dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 rounded-3xl"
       >
         {/* Hero image */}
         <div className="relative h-48 overflow-hidden rounded-t-3xl">
-          <img src={project.image} alt={project.title} className="w-full h-full object-cover opacity-60" />
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-full object-cover opacity-60"
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-[#0a0a0a] to-transparent" />
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 w-8 h-8 rounded-full bg-black/50 border border-white/10 flex items-center justify-center text-neutral-400 hover:text-white transition-colors"
+            className="absolute top-4 right-4 z-[99999] w-10 h-10 rounded-full bg-black/50 border border-white/10 flex items-center justify-center text-neutral-300 hover:text-white transition-colors"
           >
             <X size={16} />
           </button>
@@ -42,14 +65,21 @@ const ProjectModal = ({ project, onClose }: { project: any; onClose: () => void 
 
         <div className="p-6 space-y-6">
           {/* Description */}
-          <p className="text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed">{project.description}</p>
+          <p className="text-base text-neutral-600 dark:text-neutral-300 leading-relaxed mb-4 max-w-md">
+            {project.description}
+          </p>
 
           {/* Tech stack */}
           <div>
-            <p className="text-[10px] text-sky-400 uppercase tracking-widest font-futuristic mb-3">Tech Stack</p>
+            <p className="text-sm text-sky-400 uppercase tracking-widest font-futuristic mb-3">
+              Tech Stack
+            </p>
             <div className="flex flex-wrap gap-2">
               {project.tech.map((t: string) => (
-                <span key={t} className="px-3 py-1 bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5 rounded-full text-[10px] text-neutral-600 dark:text-neutral-300 font-futuristic uppercase tracking-wider">
+                <span
+                  key={t}
+                  className="px-3 py-1 bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5 rounded-full text-sm text-neutral-600 dark:text-neutral-300 font-futuristic uppercase tracking-wider"
+                >
                   {t}
                 </span>
               ))}
@@ -60,32 +90,53 @@ const ProjectModal = ({ project, onClose }: { project: any; onClose: () => void 
             <>
               {/* Metrics */}
               <div>
-                <p className="text-[10px] text-sky-400 uppercase tracking-widest font-futuristic mb-3">Performance Metrics</p>
+                <p className="text-sm text-sky-400 uppercase tracking-widest font-futuristic mb-3">
+                  Performance Metrics
+                </p>
                 <div className="grid grid-cols-3 gap-3">
-                  {project.details.metrics.map(({ label, value }: { label: string; value: string }) => (
-                    <div key={label} className="text-center p-3 bg-black/[0.02] dark:bg-white/[0.02] border border-black/5 dark:border-white/5 rounded-xl">
-                      <p className="text-lg font-bold font-futuristic text-sky-400">{value}</p>
-                      <p className="text-[10px] text-neutral-500 uppercase tracking-wider mt-1">{label}</p>
-                    </div>
-                  ))}
+                  {project.details.metrics.map(
+                    ({ label, value }: { label: string; value: string }) => (
+                      <div
+                        key={label}
+                        className="text-center p-3 bg-black/[0.02] dark:bg-white/[0.02] border border-black/5 dark:border-white/5 rounded-xl"
+                      >
+                        <p className="text-lg font-bold font-futuristic text-sky-400">
+                          {value}
+                        </p>
+                        <p className="text-sm text-neutral-500 dark:text-neutral-300 uppercase tracking-wider mt-1">
+                          {label}
+                        </p>
+                      </div>
+                    ),
+                  )}
                 </div>
               </div>
 
               {/* Architecture */}
               <div>
-                <p className="text-[10px] text-sky-400 uppercase tracking-widest font-futuristic mb-3">Architecture</p>
-                <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed bg-black/[0.02] dark:bg-white/[0.02] border border-black/5 dark:border-white/5 rounded-xl p-4">
+                <p className="text-sm text-sky-400 uppercase tracking-widest font-futuristic mb-3">
+                  Architecture
+                </p>
+                <p className="text-base text-neutral-600 dark:text-neutral-300 leading-relaxed bg-black/[0.02] dark:bg-white/[0.02] border border-black/5 dark:border-white/5 rounded-xl p-4">
                   {project.details.architecture}
                 </p>
               </div>
 
               {/* Challenges */}
               <div>
-                <p className="text-[10px] text-sky-400 uppercase tracking-widest font-futuristic mb-3">Engineering Challenges</p>
+                <p className="text-sm text-sky-400 uppercase tracking-widest font-futuristic mb-3">
+                  Engineering Challenges
+                </p>
                 <ul className="space-y-2">
                   {project.details.challenges.map((c: string, i: number) => (
-                    <li key={i} className="flex items-start gap-3 text-sm text-neutral-600 dark:text-neutral-400">
-                      <ChevronRight size={14} className="text-sky-500 shrink-0 mt-0.5" />
+                    <li
+                      key={i}
+                      className="flex items-start gap-3 text-base text-neutral-600 dark:text-neutral-300"
+                    >
+                      <ChevronRight
+                        size={14}
+                        className="text-sky-500 shrink-0 mt-0.5"
+                      />
                       {c}
                     </li>
                   ))}
@@ -101,7 +152,7 @@ const ProjectModal = ({ project, onClose }: { project: any; onClose: () => void 
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-xs font-futuristic uppercase tracking-widest text-neutral-400 hover:text-sky-400 transition-colors"
+                className="flex items-center gap-2 text-sm font-futuristic uppercase tracking-widest text-neutral-400 hover:text-sky-400 transition-colors"
               >
                 <Github size={15} /> Source Code
               </a>
@@ -111,20 +162,25 @@ const ProjectModal = ({ project, onClose }: { project: any; onClose: () => void 
                 href={project.demo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-xs font-futuristic uppercase tracking-widest text-neutral-400 hover:text-sky-400 transition-colors"
+                className="flex items-center gap-2 text-sm font-futuristic uppercase tracking-widest text-neutral-400 hover:text-sky-400 transition-colors"
               >
                 <ExternalLink size={15} /> Live Demo
               </a>
             )}
           </div>
-    </div>
-      </motion.div >
-    </motion.div >
+        </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
-
-const ProjectCard = ({ project, onClick }: { project: any; onClick: () => void }) => {
+const ProjectCard = ({
+  project,
+  onClick,
+}: {
+  project: any;
+  onClick: () => void;
+}) => {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
@@ -153,9 +209,9 @@ const ProjectCard = ({ project, onClick }: { project: any; onClick: () => void }
 
   return (
     <motion.div
-      style={{ rotateY, rotateX, transformStyle: 'preserve-3d' }}
+      style={{ rotateY, rotateX, transformStyle: "preserve-3d" }}
       onMouseMove={handleMouseMove}
-      onMouseLeave={() => { x.set(0); y.set(0); }}
+      onMouseLeave={handleMouseLeave}
       onClick={onClick}
       className="relative min-h-[500px] w-full rounded-3xl bg-neutral-100 dark:bg-neutral-900/40 overflow-hidden border border-black/5 dark:border-white/5 group transition-all duration-500 hover:border-sky-500/30 cursor-pointer"
     >
@@ -169,7 +225,7 @@ const ProjectCard = ({ project, onClick }: { project: any; onClick: () => void }
       </div>
 
       <div
-        style={{ transform: 'translateZ(50px)', transformStyle: 'preserve-3d' }}
+        style={{ transform: "translateZ(50px)", transformStyle: "preserve-3d" }}
         className="relative z-10 p-8 flex flex-col h-full justify-end min-h-[500px]"
       >
         <div className="mb-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
@@ -180,7 +236,7 @@ const ProjectCard = ({ project, onClick }: { project: any; onClick: () => void }
             <ArrowUpRight className="text-sky-500 opacity-0 group-hover:opacity-100 transition-all duration-500 -translate-x-2 group-hover:translate-x-0" />
           </div>
           <div className="max-h-0 overflow-hidden opacity-0 group-hover:max-h-40 group-hover:opacity-100 transition-all duration-700 delay-100">
-            <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed mb-4 max-w-md">
+            <p className="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed mb-4 max-w-md">
               {project.description}
             </p>
           </div>
@@ -189,12 +245,15 @@ const ProjectCard = ({ project, onClick }: { project: any; onClick: () => void }
         <div className="pt-4 border-t border-white/10 flex flex-col gap-4">
           <div className="flex flex-wrap gap-2">
             {project.tech.map((t: string) => (
-              <span key={t} className="text-[9px] px-2 py-1 bg-black/5 dark:bg-white/5 text-neutral-600 dark:text-neutral-400 rounded border border-black/5 dark:border-white/5 uppercase tracking-widest font-futuristic">
+              <span
+                key={t}
+                className="text-sm px-2 py-1 bg-black/5 dark:bg-white/5 text-neutral-600 dark:text-neutral-400 rounded border border-black/5 dark:border-white/5 uppercase tracking-wider font-futuristic"
+              >
                 {t}
               </span>
             ))}
           </div>
-          <p className="text-[10px] text-sky-600/80 dark:text-sky-400/60 font-futuristic uppercase tracking-widest">
+          <p className="text-sm text-sky-600/80 dark:text-sky-400/60 font-futuristic uppercase tracking-wider">
             Click to view details →
           </p>
         </div>
@@ -216,14 +275,20 @@ export const Projects = () => {
       <Section id="projects">
         <SectionTitle title="Selected Works" subtitle="05 // PORTFOLIO" />
         <div className="grid md:grid-cols-2 gap-6 lg:gap-10">
-          {PROJECTS.map(project => (
-            <ProjectCard key={project.id} project={project} onClick={() => setSelected(project)} />
+          {PROJECTS.map((project) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              onClick={() => setSelected(project)}
+            />
           ))}
         </div>
       </Section>
 
       <AnimatePresence>
-        {selected && <ProjectModal project={selected} onClose={() => setSelected(null)} />}
+        {selected && (
+          <ProjectModal project={selected} onClose={() => setSelected(null)} />
+        )}
       </AnimatePresence>
     </>
   );

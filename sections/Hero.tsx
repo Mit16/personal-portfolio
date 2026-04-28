@@ -1,21 +1,31 @@
 // sections\Hero.tsx
-import React, { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
-import { ChevronDown, Github, Linkedin, Mail, Download } from 'lucide-react';
+import React, { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
+import { ChevronDown, Github, Linkedin, Mail, Download } from "lucide-react";
 
-const words = ['Backend Engineer', 'Full Stack Developer'];
+const words = ["Backend Engineer", "Full Stack Developer"];
 
 const RESUME_URL = import.meta.env.VITE_RESUME_FILE_ID
   ? `https://drive.google.com/uc?export=download&id=${import.meta.env.VITE_RESUME_FILE_ID}`
   : null;
 
 export const Hero = () => {
-  const [displayed, setDisplayed] = useState('');
-  const state = useRef({ wordIndex: 0, charIndex: 0, isDeleting: false, isPaused: false });
+  const [displayed, setDisplayed] = useState("");
+  const state = useRef({
+    wordIndex: 0,
+    charIndex: 0,
+    isDeleting: false,
+    isPaused: false,
+  });
 
   useEffect(() => {
-    state.current = { wordIndex: 0, charIndex: 0, isDeleting: false, isPaused: false };
-    setDisplayed('');
+    state.current = {
+      wordIndex: 0,
+      charIndex: 0,
+      isDeleting: false,
+      isPaused: false,
+    };
+    setDisplayed("");
     let timer: ReturnType<typeof setTimeout>;
 
     const tick = () => {
@@ -69,7 +79,8 @@ export const Hero = () => {
         </h1>
         <div className="h-12 md:h-16 mb-8">
           <p className="text-xl md:text-3xl text-neutral-600 dark:text-neutral-400 font-light tracking-wide">
-            {displayed}<span className="animate-pulse text-sky-500">|</span>
+            {displayed}
+            <span className="animate-pulse text-sky-500">|</span>
           </p>
         </div>
 
@@ -109,18 +120,37 @@ export const Hero = () => {
         </div>
       </motion.div>
 
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce z-10 text-neutral-500">
+      <motion.a
+        href="#about"
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce z-10 text-neutral-500 hover:text-sky-500 cursor-pointer transition-colors"
+      >
         <ChevronDown size={32} />
-      </div>
+      </motion.a>
 
       <div className="absolute left-10 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-8 z-20">
-        <motion.a whileHover={{ x: 5, color: '#0ea5e9' }} href="https://github.com/Mit16" target="_blank" className="text-neutral-500 transition-colors">
+        <motion.a
+          whileHover={{ x: 5, color: "#0ea5e9" }}
+          href="https://github.com/Mit16"
+          target="_blank"
+          className="text-neutral-500 transition-colors"
+        >
           <Github size={24} />
         </motion.a>
-        <motion.a whileHover={{ x: 5, color: '#0ea5e9' }} href="https://linkedin.com/in/amit-m-vishwakarma" target="_blank" className="text-neutral-500 transition-colors">
+        <motion.a
+          whileHover={{ x: 5, color: "#0ea5e9" }}
+          href="https://linkedin.com/in/amit-m-vishwakarma"
+          target="_blank"
+          className="text-neutral-500 transition-colors"
+        >
           <Linkedin size={24} />
         </motion.a>
-        <motion.a whileHover={{ x: 5, color: '#0ea5e9' }} href="mailto:amitk.vishwa1633@gmail.com" className="text-neutral-500 transition-colors">
+        <motion.a
+          whileHover={{ x: 5, color: "#0ea5e9" }}
+          href="mailto:amitk.vishwa1633@gmail.com"
+          className="text-neutral-500 transition-colors"
+        >
           <Mail size={24} />
         </motion.a>
       </div>

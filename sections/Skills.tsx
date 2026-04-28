@@ -29,7 +29,7 @@ export const Skills = () => {
             >
               {skill.icon}
             </div>
-            <h3 className="font-futuristic font-medium text-xs text-neutral-500 group-hover:text-neutral-900 dark:group-hover:text-white uppercase tracking-[0.2em]">
+            <h3 className="font-futuristic font-medium text-sm md:text-base text-neutral-500 group-hover:text-neutral-900 dark:group-hover:text-white uppercase tracking-[0.2em]">
               {skill.name}
             </h3>
 

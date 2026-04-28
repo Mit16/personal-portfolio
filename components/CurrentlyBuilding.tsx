@@ -29,7 +29,7 @@ export const CurrentlyBuilding = () => {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 20, scale: 0.95 }}
                     transition={{ duration: 0.4 }}
-                    className="fixed bottom-8 left-8 z-50 max-w-xs"
+                    className="fixed bottom-8 left-8 z-20 max-w-xs"
                 >
                     <div className="relative flex items-start gap-3 px-4 py-3 bg-white/90 dark:bg-[#030303]/90 border border-black/10 dark:border-white/10 rounded-2xl backdrop-blur-md shadow-xl">
                         {/* Live pulse dot */}
