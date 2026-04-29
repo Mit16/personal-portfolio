@@ -1,11 +1,11 @@
 // sections\About.tsx
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Section, SectionTitle } from '../components/Layout';
-import { Canvas } from '@react-three/fiber';
-import { Float, MeshDistortMaterial, Sphere } from '@react-three/drei';
+import React from "react";
+import { motion } from "framer-motion";
+import { Section, SectionTitle } from "../components/Layout";
+import { Canvas } from "@react-three/fiber";
+import { Float, MeshDistortMaterial, Sphere } from "@react-three/drei";
 
-const StatCounter = ({ target, label }: { target: string, label: string }) => (
+const StatCounter = ({ target, label }: { target: string; label: string }) => (
   <div className="text-center md:text-left">
     <motion.h4
       initial={{ opacity: 0 }}
@@ -14,7 +14,9 @@ const StatCounter = ({ target, label }: { target: string, label: string }) => (
     >
       {target}
     </motion.h4>
-    <p className="text-neutral-600 dark:text-neutral-400 uppercase tracking-widest text-xs mt-2">{label}</p>
+    <p className="text-neutral-600 dark:text-neutral-400 uppercase tracking-widest text-xs mt-2">
+      {label}
+    </p>
   </div>
 );
 
@@ -25,18 +27,26 @@ export const About = () => {
         <div>
           <SectionTitle title="About Me" subtitle="01 // ABOUT ME" />
           <p className="text-lg text-neutral-700 dark:text-neutral-300 leading-relaxed mb-6 max-w-xl">
-            I'm a <span className="text-sky-500 font-semibold">Backend Engineer</span> focused on building scalable APIs, backend systems, and automation-driven workflows.
-            I enjoy solving complex problems across system design, performance optimization, and business logic.
+            I'm a{" "}
+            <span className="text-sky-500 font-semibold">Backend Engineer</span>{" "}
+            and recent developer focused on building scalable APIs, backend
+            systems, and automation-driven workflows. While I'm early in my
+            career, I enjoy solving real-world engineering problems involving
+            business logic, system design fundamentals, and performance
+            optimization.
           </p>
 
           <p className="text-neutral-600 dark:text-neutral-400 mb-12 max-w-xl">
-            From building a custom Redis implementation in C++ to developing production e-commerce systems and AI-integrated platforms, I enjoy working on systems that require both reliability and strong engineering fundamentals.
+            Over the past year, I've worked on projects ranging from a custom
+            Redis implementation in C++, e-commerce backend systems, and
+            AI-powered automation tools. I enjoy building systems that help me
+            strengthen my backend fundamentals while solving practical problems.
           </p>
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
-            <StatCounter target="10+" label="Projects Completed" />
-            <StatCounter target="2+" label="Years of Dev Experience" />
-            <StatCounter target="15+" label="Tech Stack Proficiencies" />
+            <StatCounter target="5+" label="Projects Built" />
+            <StatCounter target="1+" label="Years Learning & Building" />
+            <StatCounter target="8+" label="Technologies Used" />
           </div>
         </div>
 
@@ -60,7 +70,9 @@ export const About = () => {
           </Canvas>
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center backdrop-blur-sm p-4 rounded-lg border border-black/10 dark:border-white/10 bg-white/20 dark:bg-black/20 text-neutral-900 dark:text-white">
-              <span className="text-5xl font-bold font-futuristic">{"{CODE}"}</span>
+              <span className="text-5xl font-bold font-futuristic">
+                {"{CODE}"}
+              </span>
             </div>
           </div>
         </div>

@@ -73,7 +73,7 @@ export const Contact = () => {
               </div>
               <div>
                 <p className="text-xs text-neutral-500 uppercase tracking-widest">Location</p>
-                <p className="text-neutral-900 dark:text-white">Sector 62, Noida, U.P.</p>
+                <p className="text-neutral-900 dark:text-white">Noida, U.P.</p>
               </div>
             </div>
 
